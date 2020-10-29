@@ -1,0 +1,27 @@
+#if($!exchange.properties.isPIDM && $!exchange.properties.isPIDM != '')
+SELECT DISTINCT shrttrm_pidm as Estudiante 
+,shrttrm_astd_code_end_of_term ASTD_CODE 
+,shrttrm_term_code TERM_CODE FROM SHRTTRM 
+,SHRTGPA WHERE shrttrm_astd_code_end_of_term IN ('SU','SD','ED') 
+ AND shrttrm_pidm = shrtgpa_pidm 
+ AND shrtgpa_term_code = shrttrm_term_code 
+ AND shrtgpa_gpa_type_ind = 'I' 
+ #if($!exchange.properties.speriodo && $!exchange.properties.speriodo != '')
+ AND shrttrm_term_code = '$!exchange.properties.speriodo'
+ #end
+ AND shrttrm_pidm = '$!exchange.properties.isPIDM'
+ UNION SELECT DISTINCT shrttrm_pidm as Estudiante 
+ ,shrttrm_cast_code astd_code 
+ ,shrttrm_term_code term_code FROM SHRTTRM 
+ ,SHRTGPA WHERE shrttrm_cast_code IN ('SU','ED') 
+ AND shrttrm_pidm = shrtgpa_pidm  
+ AND shrtgpa_term_code = shrttrm_term_code 
+ AND shrtgpa_gpa_type_ind = 'I' 
+ #if($!exchange.properties.speriodo && $!exchange.properties.speriodo != '')
+ AND shrttrm_term_code = '$!exchange.properties.speriodo'  
+ #end
+ AND shrttrm_pidm = '$!exchange.properties.isPIDM'
+ ORDER BY term_code desc
+ #else 
+        SELECT '' FROM DUAL	
+#end  

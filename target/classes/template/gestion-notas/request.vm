@@ -1,0 +1,7 @@
+#if($!exchange.properties.slogin)
+slogin=$!exchange.properties.slogin
+#elseif($!exchange.properties.scodigo)
+scodigo=$!exchange.properties.scodigo
+#elseif($!exchange.properties.snumerodocumento)
+snumerodocumento=$!exchange.properties.snumerodocumento
+#end

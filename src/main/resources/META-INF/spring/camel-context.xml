@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Configures the Camel Context -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:camel="http://camel.apache.org/schema/spring"
+    xmlns:ctx="http://www.springframework.org/schema/context"
+    xmlns:jee="http://www.springframework.org/schema/jee"
+    xmlns:osgi="http://www.springframework.org/schema/osgi"
+    xmlns:osgix="http://www.springframework.org/schema/osgi-compendium"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="   http://www.springframework.org/schema/osgi-compendium       http://www.springframework.org/schema/osgi-compendium/spring-osgi-compendium.xsd              http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd               http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd              http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd               http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd          http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd">
+    <bean class="org.apache.camel.component.sql.SqlComponent" id="banner"/>
+    <!-- <bean class="org.apache.camel.component.sql.SqlComponent" id="nife"/>  -->
+    <bean class="org.apache.camel.component.sql.SqlComponent" id="registro"/>
+    <bean
+        class="org.apache.camel.component.netty.http.SecurityConstraintMapping" id="authConstrain"/>
+    <osgix:cm-properties id="props-gestion" persistent-id="api.gestion"/>
+    <osgi:reference id="sharedNettyHttpServer" interface="org.apache.camel.component.netty.http.NettySharedHttpServer"/>
+    <camelContext id="API-GESTION" trace="false" useMDCLogging="true" xmlns="http://camel.apache.org/schema/spring">
+        <package>co.edu.uniandes.fuse.api.gestion.routes</package>
+    </camelContext>
+</beans>

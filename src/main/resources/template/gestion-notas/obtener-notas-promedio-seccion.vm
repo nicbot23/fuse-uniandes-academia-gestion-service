@@ -1,0 +1,33 @@
+SELECT SHRTCKN_TERM_CODE  SEMESTRE
+   ,SHRTCKN_PIDM       LLAVE_ESTUDIANTE
+      ,SHRTCKN_CRN        CRN
+      ,SHRTCKN_SUBJ_CODE     MATERIA
+   ,SHRTCKN_CRSE_NUMB         CODIGO
+      ,SHRTCKN_SEQ_NUMB      SECCION
+      ,SHRTCKN_CRSE_TITLE      NOM_CURSO
+      ,SHRTCKG_CREDIT_HOURS     CREDS
+   ,SHRTCKL_LEVL_CODE     NIVEL_HA
+   ,SHRTCKG_GRDE_CODE_FINAL     NOTA
+   ,SHRTCKG_FINAL_GRDE_CHG_DATE   FECHA_NOTA
+   ,SHRTCKG_SEQ_NO     SECUENCIA
+  FROM shrtckn
+      ,shrtckg
+      ,shrtckl
+ WHERE shrtckn_pidm       = shrtckg_pidm
+   AND shrtckn_seq_no     = shrtckg_tckn_seq_no
+   AND shrtckn_term_code  = shrtckg_term_code
+   AND shrtckg_seq_no     =
+       (SELECT MAX(shr2.shrtckg_seq_no)
+          FROM shrtckg shr2
+         WHERE shr2.shrtckg_pidm        = shrtckn_pidm
+           AND shr2.shrtckg_tckn_seq_no = shrtckn_seq_no
+           AND shr2.shrtckg_term_code   = shrtckn_term_code
+       )
+   AND shrtckn_pidm       = shrtckl_pidm
+   AND shrtckn_term_code  = shrtckl_term_code
+   AND shrtckn_seq_no     = shrtckl_tckn_seq_no
+ AND shrtckn_term_code  = '$!exchange.properties.speriodo'
+AND SHRTCKN_CRN = '$!exchange.properties.scrn' 
+ #if($!exchange.properties.snivel)
+ AND SHRTCKL_LEVL_CODE = '$!exchange.properties.snivel'
+#end

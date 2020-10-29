@@ -1,0 +1,68 @@
+#set ($current = $body)
+ 
+#if($headers.periodo)
+	
+	
+   #if(!$headers.crn && !$headers.atributo)
+	  SELECT SSRATTR_CRN         CRN
+             ,SSRATTR_ATTR_CODE   ATRIB
+             ,STVATTR_DESC        ATRIB_DESC
+             FROM SSRATTR,STVATTR 
+       WHERE SSRATTR_TERM_CODE = '$headers.periodo'
+       AND STVATTR_CODE      = SSRATTR_ATTR_CODE
+       
+   #elseif(!$headers.crn && $headers.atributo)
+  		    SELECT SSRATTR_CRN         CRN
+             					  ,SSRATTR_ATTR_CODE   ATRIB
+                                  ,STVATTR_DESC        ATRIB_DESC
+       FROM SSRATTR,STVATTR 
+	
+	   WHERE SSRATTR_TERM_CODE = '$headers.periodo'
+	
+ 
+	   AND STVATTR_CODE      = SSRATTR_ATTR_CODE
+ 
+	
+  		 
+   #elseif($headers.crn && !$headers.atributo)
+   		     SELECT *  FROM (
+       SELECT SSRATTR_CRN         CRN
+             					  ,SSRATTR_ATTR_CODE   ATRIB
+                                  ,STVATTR_DESC        ATRIB_DESC
+   FROM SSRATTR,STVATTR 
+	
+	WHERE SSRATTR_TERM_CODE = '$headers.periodo'
+	
+ 
+	AND STVATTR_CODE      = SSRATTR_ATTR_CODE
+ 
+	)WHERE CRN = '$headers.crn'  
+   	
+   #else    
+    		     SELECT *  FROM (
+       SELECT SSRATTR_CRN         CRN
+             					  ,SSRATTR_ATTR_CODE   ATRIB
+                                  ,STVATTR_DESC        ATRIB_DESC
+   FROM SSRATTR,STVATTR 
+	
+	WHERE SSRATTR_TERM_CODE = '$headers.periodo'
+	
+ 
+	AND STVATTR_CODE      = SSRATTR_ATTR_CODE
+	
+	
+ 
+	)WHERE CRN = '$headers.crn' 
+   
+   #end        	
+ 
+  	   
+	  
+ 
+ 
+    
+ 
+ 
+ 
+ 
+ #end 

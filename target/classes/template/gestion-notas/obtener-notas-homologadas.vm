@@ -1,0 +1,20 @@
+SELECT SHRTRCE_TERM_CODE_EFF                                            PERIODO
+     ,SHRTRCE_PIDM                                                  PIDM
+     ,SHRTRCE_SUBJ_CODE                                             NOMBRE_CURSO
+     ,SHRTRCE_CRSE_NUMB                                             COD_CURSO
+     ,SHRTRCE_CRSE_TITLE                                            NOMBRE_CURSO_LARGO
+     ,SHRTRCE_CREDIT_HOURS                                          CREDITOS
+     ,SHRTRCE_GRDE_CODE                                             NOTA
+     ,SHRTRCE_LEVL_CODE                                             NIVEL_CURSO
+  FROM SHRTRCE
+    WHERE SHRTRCE_PIDM = '$!exchange.properties.spidm'
+  #if($!exchange.properties.snombrecurso && $!exchange.properties.snombrecurso != '')
+  AND SHRTRCE_SUBJ_CODE = '$!exchange.properties.snombrecurso'
+  #end
+    #if($!exchange.properties.scodigocurso && $!exchange.properties.scodigocurso != '')
+  AND SHRTRCE_CRSE_NUMB = '$!exchange.properties.scodigocurso'
+   #end
+  #if($!exchange.properties.snivel && $!exchange.properties.snivel != '')
+  AND SHRTRCE_LEVL_CODE = '$!exchange.properties.snivel'
+  #end
+    AND SHRTRCE_GRDE_CODE = 'TR'

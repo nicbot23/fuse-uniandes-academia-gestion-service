@@ -1,0 +1,6 @@
+SELECT TRUNC(SUM(SHRTGPA_QUALITY_POINTS)/SUM(SHRTGPA_GPA_HOURS),2) PROM_SEM_REGULARES 
+    FROM SHRTGPA 
+    WHERE SHRTGPA_TERM_CODE       <= '$!exchange.properties.speriodo'
+    and SHRTGPA_PIDM              = '$!exchange.properties.spidm'
+    AND SHRTGPA_LEVL_CODE         = '$!exchange.properties.snivel'
+    GROUP BY SHRTGPA_PIDM, SHRTGPA_LEVL_CODE

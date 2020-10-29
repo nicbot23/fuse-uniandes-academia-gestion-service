@@ -1,0 +1,2 @@
+SELECT MIN(SHRTGPA_TERM_CODE) FROM SHRTGPA WHERE SHRTGPA_PIDM = '$!exchange.properties.spidm' 
+AND SHRTGPA_LEVL_CODE = '$!exchange.properties.snivel'  AND SHRTGPA_GPA_TYPE_IND = 'I'

@@ -1,0 +1,65 @@
+SELECT SHRTCKN_TERM_CODE  SEMESTRE
+         ,SHRTCKN_PIDM       LLAVE_ESTUDIANTE
+      ,SHRTCKN_CRN        CRN
+      ,SHRTCKN_SUBJ_CODE     MATERIA
+   ,SHRTCKN_CRSE_NUMB         CODIGO
+      ,SHRTCKN_SEQ_NUMB      SECCION
+      ,SHRTCKN_CRSE_TITLE      NOM_CURSO
+      ,SHRTCKG_CREDIT_HOURS     CREDS
+   ,SHRTCKL_LEVL_CODE     NIVEL_HA
+   ,SHRTCKG_GRDE_CODE_FINAL     NOTA
+   ,SHRTCKG_FINAL_GRDE_CHG_DATE   FECHA_NOTA
+   ,SHRTCKG_SEQ_NO     SECUENCIA
+        ,SPRIDEN_FIRST_NAME||' '||SPRIDEN_MI 	NOMBRES_PROF
+        ,SPRIDEN_LAST_NAME         				APELLIDOS_PROF
+        ,GOBTPAC_LDAP_USER       				USUARIO_PROF
+  FROM shrtckn
+      ,shrtckg
+      ,shrtckl
+      ,SIRASGN       
+      ,SSBSECT       
+      ,SPRIDEN       
+      ,SPBPERS       
+      ,GOBTPAC       
+      ,STVLGCY
+ WHERE shrtckn_pidm       = shrtckg_pidm
+   AND shrtckn_seq_no     = shrtckg_tckn_seq_no
+   AND shrtckn_term_code  = shrtckg_term_code
+   AND shrtckg_seq_no     =
+       (SELECT MAX(shr2.shrtckg_seq_no)
+          FROM shrtckg shr2
+         WHERE shr2.shrtckg_pidm        = shrtckn_pidm
+           AND shr2.shrtckg_tckn_seq_no = shrtckn_seq_no
+           AND shr2.shrtckg_term_code   = shrtckn_term_code
+       )
+   AND shrtckn_pidm       = shrtckl_pidm
+   AND shrtckn_term_code  = shrtckl_term_code
+   AND shrtckn_seq_no     = shrtckl_tckn_seq_no
+   AND shrtckn_pidm = '$!exchange.properties.spidm'
+
+
+#if($!exchange.properties.scrn && $!exchange.properties.scrn != '')
+AND SHRTCKN_CRN = '$!exchange.properties.scrn'
+#end
+#if($!exchange.properties.snombrecurso && $!exchange.properties.snombrecurso != '')
+AND SHRTCKN_SUBJ_CODE = '$!exchange.properties.snombrecurso'
+#end
+#if($!exchange.properties.scodigocurso && $!exchange.properties.scodigocurso != '')
+AND SHRTCKN_CRSE_NUMB = '$!exchange.properties.scodigocurso'
+#end
+
+
+#if($!exchange.properties.snivel && $!exchange.properties.snivel != '')
+   AND SHRTCKL_LEVL_CODE = '$!exchange.properties.snivel'
+#end
+   AND SSBSECT_SEQ_NUMB=SHRTCKN_SEQ_NUMB
+   AND SIRASGN_TERM_CODE 	= SSBSECT_TERM_CODE
+   AND SSBSECT_TERM_CODE    = SHRTCKN_TERM_CODE
+   AND SIRASGN_CRN       	= SSBSECT_CRN
+   AND SIRASGN_PIDM 		= SPRIDEN_PIDM
+   AND SPBPERS_PIDM 		= SIRASGN_PIDM
+   AND SIRASGN_PIDM 		= GOBTPAC_PIDM (+)
+   AND SPRIDEN_CHANGE_IND 	IS NULL
+   AND SPBPERS_LGCY_CODE 	= STVLGCY_code (+)
+   AND SSBSECT_SUBJ_CODE    =	SHRTCKN_SUBJ_CODE
+   AND SSBSECT_CRSE_NUMB  	=   SHRTCKN_CRSE_NUMB
