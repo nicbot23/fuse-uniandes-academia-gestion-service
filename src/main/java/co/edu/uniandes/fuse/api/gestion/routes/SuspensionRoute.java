@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import org.apache.camel.LoggingLevel;
 
 import co.edu.uniandes.fuse.api.models.entity.gestionNotas.NotaEstudiante;
+import co.edu.uniandes.fuse.api.models.entity.gestionSuspension.ResponseSuspensionesAcademicas;
+import co.edu.uniandes.fuse.api.models.entity.gestionSuspension.ResponseSuspensionesDisciplinarias;
 import co.edu.uniandes.fuse.api.processors.gestionSuspension.AuthorizationProcessor;
 import co.edu.uniandes.fuse.api.processors.gestionSuspension.DataProcessorSuspensionesAcademicas;
 import co.edu.uniandes.fuse.api.processors.gestionSuspension.DataProcessorSuspensionesDisciplinarias;
@@ -42,7 +44,7 @@ public class SuspensionRoute extends RestConfiguration{
 					.param()
 						.name("scodigo").description("Codigo del estudiante")
 					.endParam()
-				//.outType(Estudiante.class) //verificar los datos que llegan de los parametros
+				.outType(ResponseSuspensionesAcademicas.class) 
 				.responseMessage().code("000").message("300 - Redirect<br>400 - Client Error<br>500 - Server Error").responseModel(ErrorResponse.class).endResponseMessage()
 				.to("direct:obtenerSuspensionesAcademicas")
         	.get("/obtener-suspensiones-disciplinarias")
@@ -63,7 +65,7 @@ public class SuspensionRoute extends RestConfiguration{
 					.param()
 						.name("speriodo").description("Periodo del estudiante")
 					.endParam()
-				//.outType(NotaEstudiante.class)//verificar los datos que llegan de los parametros
+				.outType(ResponseSuspensionesDisciplinarias.class)//verificar los datos que llegan de los parametros
 				.responseMessage().code("000").message("300 - Redirect<br>400 - Client Error<br>500 - Server Error").responseModel(ErrorResponse.class).endResponseMessage()
 				.to("direct:obtenerSuspensionesAcademicas")
 	      ;
@@ -117,7 +119,8 @@ public class SuspensionRoute extends RestConfiguration{
 			.setHeader("CamelSqlQuery").simple("${body}")
 			.to("sql:dumy")
 			.log( LoggingLevel.DEBUG,"QUERY RESPONSE ${body}")
-			.process(new DataProcessorSuspensionesAcademicas())
+			.bean(DataProcessorSuspensionesAcademicas.class)
+			//.process(new DataProcessorSuspensionesAcademicas())
 			//.to("direct:route-audit-response")
 		;
         
@@ -137,7 +140,8 @@ public class SuspensionRoute extends RestConfiguration{
         		.log("QUERY TO EXECUTE {{sql.query.suspensiones.disciplinarias}}")
         		.to("sql://{{sql.query.suspensiones.disciplinarias}}")
         		.log("QUERY RESPONSE ${body}")
-        		.process(new DataProcessorSuspensionesDisciplinarias())
+        		.bean(DataProcessorSuspensionesDisciplinarias.class)
+        		//.process(new DataProcessorSuspensionesDisciplinarias())
         		.otherwise()
         			.log("empty SPIDM...consume UNIANDES ::: WS-REST CONSULTA-PIDM}")
         			.removeHeaders("*")
@@ -158,7 +162,8 @@ public class SuspensionRoute extends RestConfiguration{
         		    	.log(LoggingLevel.DEBUG ,"QUERY TO EXECUTE {{sql.query.suspensiones.disciplinarias}}")
         		    	.to("sql://{{sql.query.suspensiones.disciplinarias}}")
         		    	.log("QUERY RESPONSE ${body}")
-        		    	.process(new DataProcessorSuspensionesDisciplinarias())
+        		    	.bean(DataProcessorSuspensionesDisciplinarias.class)
+        		    	//.process(new DataProcessorSuspensionesDisciplinarias())
         		    	.when().simple("${headers.CamelHttpResponseCode} == '404'")
         		    		.log("Existe un problema con la operacion obtener-pidm")
         		    		.setProperty("estado").constant(false)

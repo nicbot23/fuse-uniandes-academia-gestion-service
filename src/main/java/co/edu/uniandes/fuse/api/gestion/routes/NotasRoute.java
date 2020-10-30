@@ -11,6 +11,10 @@ import org.omg.CORBA.portable.ResponseHandler;
 import co.edu.uniandes.fuse.core.utils.models.ErrorResponse;
 
 import co.edu.uniandes.fuse.api.models.entity.gestionNotas.NotaEstudiante;
+import co.edu.uniandes.fuse.api.processors.gestionNotas.ResponseHandlerr;
+import co.edu.uniandes.fuse.api.models.entity.gestionNotas.ResponseNotasEstudiante;
+import co.edu.uniandes.fuse.api.models.entity.gestionNotas.ResponseNotasHomologadas;
+import co.edu.uniandes.fuse.api.models.entity.gestionNotas.ResponsePromedioAcumulado;
 import co.edu.uniandes.fuse.api.processors.gestionNotas.RequestProcessor;
 
 public class NotasRoute extends RestConfiguration {
@@ -52,13 +56,13 @@ public class NotasRoute extends RestConfiguration {
 					.param()
 						.name("snivel").description("Codigo del estudiante")
 					.endParam()
-				//.outType(NotaEstudiante.class)
+				.outType(ResponseNotasHomologadas.class)
 				.responseMessage().code("000").message("300 - Redirect<br>400 - Client Error<br>500 - Server Error").responseModel(ErrorResponse.class).endResponseMessage()        	
 				.to("direct:obtenerNotasHomologadas")
 				//.get("/obtener-notas-maximo-semestre-calificado")
         	//.get("/obtener-notas-minimo-semestre-calificado")
         	.get("/obtener-notas-promedio-acumulado") //----
-	        	.description("Consulta las notas homologadas de un estudiante ")				
+	        	.description("Consulta promedio acumulado de notas de un estudiante ")				
 	    		.consumes("application/json").produces("application/json")
 		        	.param()
 						.name("snumerodocumento").description("Numero de documento del estudiante")
@@ -78,7 +82,7 @@ public class NotasRoute extends RestConfiguration {
 					.param()
 						.name("snivel").description("Codigo del estudiante")
 					.endParam()
-				//.outType(NotaEstudiante.class)
+				.outType(ResponsePromedioAcumulado.class)
 				.responseMessage().code("000").message("300 - Redirect<br>400 - Client Error<br>500 - Server Error").responseModel(ErrorResponse.class).endResponseMessage()
 				.to("direct:obtenerPromedioAcumulado")
         	//.get("/obtener-notas-promedio-seccion")
@@ -99,16 +103,16 @@ public class NotasRoute extends RestConfiguration {
 	    			.when(simple("${headers.CamelHttpResponseCode} != '200'"))
 		    			.log(LoggingLevel.ERROR,"::::: Error en Consultar SPIDM")
 		    			.setProperty("estado").constant(false)
-		    			.setProperty("message").simple("{{excepcion.pidm.disconnect}}")
-		    			.to("direct:route-error-handler")
+		    			.setProperty("message", simple("{{excepcion.pidm.disconnect}}"))
+		    			//.to("direct:route-error-handler")
 		    		.otherwise()
 		    			.to("velocity:template/gestion-notas/obtener-notas-homologadas.vm") //verificar
 		    			.setHeader("CamelSqlQuery").simple("${body}")
 		    			.log("${body}")
 		    			.to("sql:dumy")
 		    			.log("${body}")
-		    			.bean(ResponseHandler.class) //verificar
-		    			.to("direct:route-audit-response")
+		    			.bean(ResponseHandlerr.class) //verificar
+		    			//.to("direct:route-audit-response")
 		    	.endChoice()
     		;
 	    	

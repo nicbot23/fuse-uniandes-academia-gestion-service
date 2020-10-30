@@ -16,10 +16,10 @@ import co.edu.uniandes.fuse.api.models.entity.gestionSuspension.ResponseSuspensi
 import co.edu.uniandes.fuse.api.models.entity.gestionSuspension.Suspension;
 import co.edu.uniandes.fuse.api.utils.Util;
 
-public class DataProcessorSuspensionesAcademicas implements Processor{
+public class DataProcessorSuspensionesAcademicas {
 	
-	//@BeanInject("props")
-	 // private Properties properties;
+	@BeanInject("props")
+	  private Properties properties;
 	  
 	  public void process(Exchange exchange, 
 								  			@ExchangeProperty("messageusuario") String mensajeusuario, 
@@ -27,7 +27,7 @@ public class DataProcessorSuspensionesAcademicas implements Processor{
 								  			@ExchangeProperty("estado") boolean estado, 
 								  			@ExchangeProperty("message") String message)
 	    throws Exception
-	  {
+	  { 
 	    List<Map<String, Object>> result = (List)exchange.getIn().getBody();
 	    List<Suspension> suspensiones = new ArrayList();
 	    ResponseSuspensionesAcademicas response = new ResponseSuspensionesAcademicas();

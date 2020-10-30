@@ -20,10 +20,10 @@ import org.apache.camel.ExchangeProperty;
 import org.apache.camel.Processor;
 import org.codehaus.jackson.map.ObjectMapper;
 
-public class DataProcessorSuspensionesDisciplinarias implements Processor{
+public class DataProcessorSuspensionesDisciplinarias {
 	
-	//@BeanInject("props")
-	//  private Properties properties;
+	@BeanInject("props")
+    private Properties properties;
 	  
 	  public void process(Exchange exchange, 
 			  			@ExchangeProperty("messageusuario") String mensajeusuario, 
