@@ -3,11 +3,8 @@ package co.edu.uniandes.fuse.api.processors.gestionNotas;
 import co.edu.uniandes.model.MensajeOut;
 import java.util.HashMap;
 import java.util.Map;
-import org.apache.camel.CamelContext;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
-import org.apache.camel.spi.RouteContext;
-import org.apache.camel.spi.UnitOfWork;
 import org.apache.camel.util.MessageHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +15,7 @@ public class ResponseAuditProcessor implements Processor{
 	 private static final Logger LOG = LoggerFactory.getLogger(ResponseAuditProcessor.class);
 	
 	public void process(Exchange exchange) throws Exception {
-		Map requestMap = new HashMap();
+		Map<String, Object> requestMap = new HashMap<String, Object>();
 		String body = null;
 		if (exchange.getIn() != null) {
 			String response = MessageHelper.extractBodyAsString(exchange.getIn());

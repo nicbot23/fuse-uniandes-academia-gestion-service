@@ -17,7 +17,6 @@ import javax.xml.datatype.XMLGregorianCalendar;
 import org.apache.camel.BeanInject;
 import org.apache.camel.Exchange;
 import org.apache.camel.ExchangeProperty;
-import org.apache.camel.Processor;
 import org.codehaus.jackson.map.ObjectMapper;
 
 public class DataProcessorSuspensionesDisciplinarias {

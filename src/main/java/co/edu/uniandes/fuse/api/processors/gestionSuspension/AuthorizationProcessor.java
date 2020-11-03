@@ -5,7 +5,6 @@ import org.apache.camel.BeanInject;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.commons.codec.binary.Base64;
-import org.springframework.stereotype.Component;
 
 public class AuthorizationProcessor implements Processor{
 	

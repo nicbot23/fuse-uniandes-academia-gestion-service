@@ -4,11 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.security.auth.Subject;
 import javax.servlet.ServletRequest;
-import org.apache.camel.CamelContext;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
-import org.apache.camel.spi.RouteContext;
-import org.apache.camel.spi.UnitOfWork;
 
 public class RequestAuditProcessor implements Processor{
 	

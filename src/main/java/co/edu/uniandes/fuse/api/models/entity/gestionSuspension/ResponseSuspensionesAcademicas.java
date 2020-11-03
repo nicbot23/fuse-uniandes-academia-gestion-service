@@ -3,7 +3,6 @@ package co.edu.uniandes.fuse.api.models.entity.gestionSuspension;
 import co.edu.uniandes.model.MensajeOut;
 import java.util.ArrayList;
 import java.util.List;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 
 public class ResponseSuspensionesAcademicas {

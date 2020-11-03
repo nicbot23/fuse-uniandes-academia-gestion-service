@@ -5,7 +5,6 @@ import co.edu.uniandes.model.CursoSeccion;
 import co.edu.uniandes.model.Profesor;
 
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 
 public class SalidaNotasHistorico {

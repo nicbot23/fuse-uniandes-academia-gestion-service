@@ -2,15 +2,8 @@ package co.edu.uniandes.fuse.api.models.entity.gestionNotas;
 
 import java.util.Date;
 import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 
-import co.edu.uniandes.model.util.CanonicalDateDeserializer;
-
-import co.edu.uniandes.model.util.CanonicalDateSerializer;
 
 public class NotaEstudiante {
 

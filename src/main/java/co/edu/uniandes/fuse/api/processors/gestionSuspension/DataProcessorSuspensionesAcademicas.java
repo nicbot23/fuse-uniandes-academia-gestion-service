@@ -8,8 +8,6 @@ import java.util.Properties;
 import org.apache.camel.BeanInject;
 import org.apache.camel.Exchange;
 import org.apache.camel.ExchangeProperty;
-import org.apache.camel.Processor;
-import org.apache.camel.builder.RouteBuilder;
 import org.codehaus.jackson.map.ObjectMapper;
 import co.edu.uniandes.model.MensajeOut;
 

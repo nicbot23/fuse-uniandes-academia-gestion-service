@@ -4,16 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.security.auth.Subject;
 import javax.servlet.ServletRequest;
-import org.apache.camel.CamelContext;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
-import org.apache.camel.spi.RouteContext;
-import org.apache.camel.spi.UnitOfWork;
 
 public class RequestAuditProcessor implements Processor{
 
 	public void process(Exchange exchange) throws Exception {
-		Map requestMap = new HashMap();
+		Map<String, Object> requestMap = new HashMap<String, Object>();
 		long currentTimeMillis = System.currentTimeMillis();
 		String user = null;
 

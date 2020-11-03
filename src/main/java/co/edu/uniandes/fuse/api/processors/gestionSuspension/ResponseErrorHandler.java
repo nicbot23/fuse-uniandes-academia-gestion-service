@@ -7,7 +7,6 @@ import org.apache.camel.Exchange;
 import org.apache.camel.ExchangeProperty;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.springframework.stereotype.Component;
 
 public class ResponseErrorHandler {
 	

@@ -3,9 +3,7 @@ package co.edu.uniandes.fuse.api.processors.gestionNotas;
 import co.edu.uniandes.model.MensajeOut;
 import org.apache.camel.Exchange;
 import org.apache.camel.ExchangeProperty;
-import org.apache.camel.Message;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.springframework.stereotype.Component;
 
 public class ResponseErrorHandler {
 	

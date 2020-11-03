@@ -3,7 +3,6 @@ package co.edu.uniandes.fuse.api.processors.gestionNotas;
 import java.util.ArrayList;
 import javax.ws.rs.core.MultivaluedMap;
 import org.apache.camel.Exchange;
-import org.apache.camel.Message;
 import org.apache.camel.Processor;
 import org.apache.cxf.jaxrs.utils.JAXRSUtils;
 
@@ -11,7 +10,7 @@ public class RequestProcessor implements Processor{
 	
 	Exchange exchange = null;
 	String operation = "";
-	ArrayList docs = new ArrayList();
+	ArrayList<Object> docs = new ArrayList<Object>();
 
 	public void process(Exchange exchange) throws Exception {
 		this.exchange = exchange;
@@ -47,7 +46,7 @@ public class RequestProcessor implements Processor{
 
 	public void validateHeaders() {
 		String queryString = (String) this.exchange.getIn().getHeader("CamelHttpQuery", String.class);
-		MultivaluedMap queryMap = JAXRSUtils.getStructuredParams(queryString, "&", false, false);
+		MultivaluedMap<?, ?> queryMap = JAXRSUtils.getStructuredParams(queryString, "&", false, false);
 		if (queryMap.size() == 0)
 			throw new IllegalArgumentException("No se ha diligenciado los campos minimos requeridos");
 	}
