@@ -33,7 +33,7 @@ public class RestConfiguration extends RouteBuilder{
 
 		// GET PROPERTIES FILE
 		PropertiesComponent pc = getContext().getComponent("properties", PropertiesComponent.class);
-		pc.setLocation("ref:props-academico");		
+		pc.setLocation("ref:props-gestion");		
 
 		// DATASOURCE CONFIGURATION
 		try {

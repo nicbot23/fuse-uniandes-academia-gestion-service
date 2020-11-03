@@ -122,7 +122,7 @@ public class NotasRoute extends RestConfiguration {
 	    	
 	    	from("direct:obtenerPromedioAcumulado")
 	    		//.to("direct:route-audit-request")
-	    		//.process(requestProcessor.class) //verificar
+	    		.process(new RequestProcessor()) //verificar
 	    		.log(":::/obtener-notas-promedio-acumulado")
 	    		.to("direct:pidmRoute")
 	    		.choice()	
@@ -137,8 +137,9 @@ public class NotasRoute extends RestConfiguration {
 		    			.log("${body}")
 		    			.to("sql:dumy")//verificar
 		    			.log("${body}")
-		    			.bean(ResponseHandler.class)//verificar
-		    			.to("direct:route-audit-response")
+		    			.bean(ResponseHandlerr.class)//verificar
+		    			//.to("direct:route-audit-response")
+		    		.end()
 		    	.endChoice()
 	    	;
     		
@@ -177,6 +178,7 @@ public class NotasRoute extends RestConfiguration {
 	    	     		.log("este es mensaje USUARIO ${property.messageusuario}")
 	    	     		.setProperty("messagetecnico").jsonpath("$.mensajeRta.SMensajeRtaTecnico")
 	    	     		.log("este es mensaje tecnico ${property.messagetecnico}")
+	    	     	.end()
 	    	     .endChoice()
     	     		
     	     ;

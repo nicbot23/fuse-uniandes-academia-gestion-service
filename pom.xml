@@ -4,10 +4,10 @@
   <modelVersion>4.0.0</modelVersion>
   
   <groupId>co.edu.uniandes.fuse.api</groupId>
-	<artifactId>gestion-notas</artifactId>
+	<artifactId>gestion</artifactId>
 	<version>1.0.0</version>
 	<packaging>bundle</packaging>
-	<name>UNIANDES ::: WS-REST API-GESTION-NOTAS</name>
+	<name>UNIANDES ::: WS-REST API-GESTION</name>
 	
 	<!-- llamado a POM padre -->
     <parent>

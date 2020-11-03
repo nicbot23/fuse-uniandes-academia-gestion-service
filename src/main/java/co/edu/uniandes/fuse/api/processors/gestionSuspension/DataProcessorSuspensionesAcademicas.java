@@ -9,6 +9,7 @@ import org.apache.camel.BeanInject;
 import org.apache.camel.Exchange;
 import org.apache.camel.ExchangeProperty;
 import org.apache.camel.Processor;
+import org.apache.camel.builder.RouteBuilder;
 import org.codehaus.jackson.map.ObjectMapper;
 import co.edu.uniandes.model.MensajeOut;
 
@@ -16,10 +17,11 @@ import co.edu.uniandes.fuse.api.models.entity.gestionSuspension.ResponseSuspensi
 import co.edu.uniandes.fuse.api.models.entity.gestionSuspension.Suspension;
 import co.edu.uniandes.fuse.api.utils.Util;
 
-public class DataProcessorSuspensionesAcademicas {
+public class DataProcessorSuspensionesAcademicas  {
 	
-	@BeanInject("props")
+	  @BeanInject("props")
 	  private Properties properties;
+	  
 	  
 	  public void process(Exchange exchange, 
 								  			@ExchangeProperty("messageusuario") String mensajeusuario, 
