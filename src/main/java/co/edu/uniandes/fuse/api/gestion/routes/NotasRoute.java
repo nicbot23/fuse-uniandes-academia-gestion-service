@@ -1,17 +1,13 @@
 package co.edu.uniandes.fuse.api.gestion.routes;
 
-import java.io.IOException;
-import java.net.ConnectException;
-import java.sql.SQLException;
 
-import javax.ws.rs.ClientErrorException;
 
 import org.apache.camel.LoggingLevel;
+import org.apache.camel.model.rest.RestParamType;
+
 import co.edu.uniandes.fuse.core.utils.models.ErrorResponse;
 
-import co.edu.uniandes.fuse.api.models.entity.gestionNotas.NotaEstudiante;
 import co.edu.uniandes.fuse.api.processors.gestionNotas.ResponseHandler;
-import co.edu.uniandes.fuse.api.models.entity.gestionNotas.ResponseNotasEstudiante;
 import co.edu.uniandes.fuse.api.models.entity.gestionNotas.ResponseNotasHomologadas;
 import co.edu.uniandes.fuse.api.models.entity.gestionNotas.ResponsePromedioAcumulado;
 import co.edu.uniandes.fuse.api.processors.gestionNotas.RequestProcessor;
@@ -36,24 +32,38 @@ public class NotasRoute extends RestConfiguration {
         		.consumes("application/json").produces("application/json")
 					.param()
 						.name("snumerodocumento").description("Numero de documento del estudiante")
+						.type(RestParamType.query)
+						.required(true)
 					.endParam()
 					.param()
 						.name("spidm").description("C&oacute;digo del estudiante")
+						.type(RestParamType.query)
+						.required(true)
 					.endParam()
 					.param()
 						.name("slogin").description("login del estudiante")
+						.type(RestParamType.query)
+						.required(true)
 					.endParam()
 					.param()
 						.name("scodigo").description("Codigo del estudiante")
+						.type(RestParamType.query)
+						.required(true)
 					.endParam()
 					.param()
 						.name("snombrecurso").description("Codigo del estudiante")
+						.type(RestParamType.query)
+						.required(true)
 					.endParam()
 					.param()
 						.name("scodigocurso").description("Codigo del estudiante")
+						.type(RestParamType.query)
+						.required(true)
 					.endParam()
 					.param()
 						.name("snivel").description("Codigo del estudiante")
+						.type(RestParamType.query)
+						.required(true)
 					.endParam()
 				.outType(ResponseNotasHomologadas.class)
 				.responseMessage().code("000").message("300 - Redirect<br>400 - Client Error<br>500 - Server Error").responseModel(ErrorResponse.class).endResponseMessage()        	
@@ -65,21 +75,33 @@ public class NotasRoute extends RestConfiguration {
 	    		.consumes("application/json").produces("application/json")
 		        	.param()
 						.name("snumerodocumento").description("Numero de documento del estudiante")
+						.type(RestParamType.query)
+						.required(true)
 						.endParam()
 					.param()
 						.name("spidm").description("C&oacute;digo del estudiante")
+						.type(RestParamType.query)
+						.required(true)
 					.endParam()
 					.param()
 						.name("slogin").description("login del estudiante")
+						.type(RestParamType.query)
+						.required(true)
 					.endParam()
 					.param()
 						.name("scodigo").description("Codigo del estudiante")
+						.type(RestParamType.query)
+						.required(true)
 					.endParam()
 					.param()
 						.name("speriodo").description("Codigo del estudiante")
+						.type(RestParamType.query)
+						.required(true)
 					.endParam()
 					.param()
 						.name("snivel").description("Codigo del estudiante")
+						.type(RestParamType.query)
+						.required(true)
 					.endParam()
 				.outType(ResponsePromedioAcumulado.class)
 				.responseMessage().code("000").message("300 - Redirect<br>400 - Client Error<br>500 - Server Error").responseModel(ErrorResponse.class).endResponseMessage()

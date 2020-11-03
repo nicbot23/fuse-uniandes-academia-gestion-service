@@ -1,20 +1,17 @@
 package co.edu.uniandes.fuse.api.gestion.routes;
 
-import java.net.ConnectException;
-import java.net.SocketTimeoutException;
-import java.net.UnknownHostException;
-import java.sql.SQLException;
+
 
 import org.apache.camel.LoggingLevel;
+import org.apache.camel.model.rest.RestParamType;
 
-import co.edu.uniandes.fuse.api.models.entity.gestionNotas.NotaEstudiante;
 import co.edu.uniandes.fuse.api.models.entity.gestionSuspension.ResponseSuspensionesAcademicas;
 import co.edu.uniandes.fuse.api.models.entity.gestionSuspension.ResponseSuspensionesDisciplinarias;
 import co.edu.uniandes.fuse.api.processors.gestionSuspension.AuthorizationProcessor;
 import co.edu.uniandes.fuse.api.processors.gestionSuspension.DataProcessorSuspensionesAcademicas;
 import co.edu.uniandes.fuse.api.processors.gestionSuspension.DataProcessorSuspensionesDisciplinarias;
 import co.edu.uniandes.fuse.core.utils.models.ErrorResponse;
-import co.edu.uniandes.model.Estudiante;
+
 
 public class SuspensionRoute extends RestConfiguration{
 	
@@ -34,15 +31,23 @@ public class SuspensionRoute extends RestConfiguration{
 				.consumes("application/json").produces("application/json")
 					.param()
 						.name("snumerodocumento").description("Numero de documento del estudiante")
+						.type(RestParamType.query)
+						.required(true)
 					.endParam()
 					.param()
 						.name("spidm").description("C&oacute;digo del estudiante")
+						.type(RestParamType.query)
+						.required(true)
 					.endParam()
 					.param()
 						.name("slogin").description("login del estudiante")
+						.type(RestParamType.query)
+						.required(true)
 					.endParam()
 					.param()
 						.name("scodigo").description("Codigo del estudiante")
+						.type(RestParamType.query)
+						.required(true)
 					.endParam()
 				.outType(ResponseSuspensionesAcademicas.class) 
 				.responseMessage().code("000").message("300 - Redirect<br>400 - Client Error<br>500 - Server Error").responseModel(ErrorResponse.class).endResponseMessage()
@@ -52,18 +57,28 @@ public class SuspensionRoute extends RestConfiguration{
 				.consumes("application/json").produces("application/json")
 					.param()
 						.name("snumerodocumento").description("Numero de documento del estudiante")
+						.type(RestParamType.query)
+						.required(true)
 					.endParam()
 					.param()
 						.name("spidm").description("C&oacute;digo del estudiante")
+						.type(RestParamType.query)
+						.required(true)
 					.endParam()
 					.param()
 						.name("slogin").description("login del estudiante")
+						.type(RestParamType.query)
+						.required(true)
 					.endParam()
 					.param()
 						.name("scodigo").description("Codigo del estudiante")
+						.type(RestParamType.query)
+						.required(true)
 					.endParam()
 					.param()
 						.name("speriodo").description("Periodo del estudiante")
+						.type(RestParamType.query)
+						.required(true)
 					.endParam()
 				.outType(ResponseSuspensionesDisciplinarias.class)//verificar los datos que llegan de los parametros
 				.responseMessage().code("000").message("300 - Redirect<br>400 - Client Error<br>500 - Server Error").responseModel(ErrorResponse.class).endResponseMessage()

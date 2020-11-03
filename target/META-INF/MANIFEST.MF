@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1604436419129
+Bnd-LastModified: 1604440164967
 Build-Jdk: 1.8.0_271
 Built-By: n.ibarra
 Bundle-ManifestVersion: 2
@@ -48,8 +48,8 @@ Export-Package: co.edu.uniandes.fuse.api.utils;uses:="javax.xml.datatype
  sion="1.0.1",co.edu.uniandes.model;uses:="org.codehaus.jackson.annotate
  ,co.edu.uniandes.model.util,org.codehaus.jackson.map.annotate";version=
  "1.0.0",co.edu.uniandes.fuse.api.gestion.routes;uses:="co.edu.uniandes.
- fuse.core.utils.beans,org.apache.camel.model,org.apache.camel.builder,o
- rg.apache.camel,co.edu.uniandes.fuse.core.utils.models,co.edu.uniandes.
+ fuse.core.utils.beans,org.apache.camel.model,org.apache.camel.builder,c
+ o.edu.uniandes.fuse.core.utils.models,org.apache.camel,co.edu.uniandes.
  fuse.api.models.entity.gestionNotas,org.apache.camel.model.rest,co.edu.
  uniandes.fuse.api.processors.gestionNotas,org.apache.camel.component.pr
  operties,org.apache.camel.component.netty.http,org.apache.camel.compone
