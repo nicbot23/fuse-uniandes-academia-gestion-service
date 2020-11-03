@@ -21,7 +21,7 @@ import org.springframework.stereotype.Component;
 public class ResponseHandlerSicua {
 	
 	
-	@BeanInject("gestion-notas-props")
+	@BeanInject("props-gestion")
 	Properties property;
 
 	public void process(Exchange exchange, @ExchangeProperty("estado") Boolean bOperacionExitosa,

@@ -7,11 +7,10 @@ import java.sql.SQLException;
 import javax.ws.rs.ClientErrorException;
 
 import org.apache.camel.LoggingLevel;
-import org.omg.CORBA.portable.ResponseHandler;
 import co.edu.uniandes.fuse.core.utils.models.ErrorResponse;
 
 import co.edu.uniandes.fuse.api.models.entity.gestionNotas.NotaEstudiante;
-import co.edu.uniandes.fuse.api.processors.gestionNotas.ResponseHandlerr;
+import co.edu.uniandes.fuse.api.processors.gestionNotas.ResponseHandler;
 import co.edu.uniandes.fuse.api.models.entity.gestionNotas.ResponseNotasEstudiante;
 import co.edu.uniandes.fuse.api.models.entity.gestionNotas.ResponseNotasHomologadas;
 import co.edu.uniandes.fuse.api.models.entity.gestionNotas.ResponsePromedioAcumulado;
@@ -111,7 +110,7 @@ public class NotasRoute extends RestConfiguration {
 		    			.log("${body}")
 		    			.to("sql:dumy")
 		    			.log("${body}")
-		    			.bean(ResponseHandlerr.class) //verificar
+		    			.bean(ResponseHandler.class) //verificar
 		    			//.to("direct:route-audit-response")
 		    	.endChoice()
     		;
@@ -137,10 +136,9 @@ public class NotasRoute extends RestConfiguration {
 		    			.log("${body}")
 		    			.to("sql:dumy")//verificar
 		    			.log("${body}")
-		    			.bean(ResponseHandlerr.class)//verificar
+		    			.bean(ResponseHandler.class)//verificar
 		    			//.to("direct:route-audit-response")
-		    		.end()
-		    	.endChoice()
+		    	.end()
 	    	;
     		
     	
@@ -178,8 +176,8 @@ public class NotasRoute extends RestConfiguration {
 	    	     		.log("este es mensaje USUARIO ${property.messageusuario}")
 	    	     		.setProperty("messagetecnico").jsonpath("$.mensajeRta.SMensajeRtaTecnico")
 	    	     		.log("este es mensaje tecnico ${property.messagetecnico}")
-	    	     	.end()
-	    	     .endChoice()
+	    	     	
+	    	     .end()
     	     		
     	     ;
     	

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 public class AuthorizationProcessor implements Processor{
 	
-	@BeanInject("props")
+	@BeanInject("props-gestion")
 	private Properties properties;
 
 	public void process(Exchange exchange) throws Exception {

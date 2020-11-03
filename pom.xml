@@ -18,7 +18,7 @@
     
     <properties>
 		<version.fabric8-maven-plugin>1.2.0.redhat-630187</version.fabric8-maven-plugin>
-		<fabric8.profile>uniandes-api_academico</fabric8.profile>
+		<fabric8.profile>uniandes-gestion</fabric8.profile>
 		<fabric8.profileVersion>${timestamp}</fabric8.profileVersion>
 		<fabric8.jolokiaUrl>http://localhost:8181/jolokia</fabric8.jolokiaUrl>
 	</properties>

@@ -112,10 +112,8 @@ public class SuspensionRoute extends RestConfiguration{
 							.setProperty("estado").constant(false)
 							.setProperty("message").constant("{{excepcion.registros.vacios}}")
 							//.to("direct:route-error-handler")
-						.end()
-					.endChoice()
-				.end()
-			.endChoice()
+					.end()
+			.end()
 			.to("velocity:template/gestion-suspension/query_suspensiones_academicas.vm")
 			.log("QUERY::: ${body}")
 			.setHeader("CamelSqlQuery").simple("${body}")
@@ -178,10 +176,10 @@ public class SuspensionRoute extends RestConfiguration{
         		    		.setProperty("codigoRespuesta").constant("{{msj.code.not.found}}")
         		    		.setProperty("message",simple("{{excepcion.registros.vacios}}") )
         		    		.to("direct:route-error-handler")
-        		    	.end()
-        		    .endChoice()
-        		  .end()
-        	.endChoice()
+        		    	
+        		    .end()
+        		  
+        	.end()
         	//.to("direct:route-audit-response")
         	
         ;

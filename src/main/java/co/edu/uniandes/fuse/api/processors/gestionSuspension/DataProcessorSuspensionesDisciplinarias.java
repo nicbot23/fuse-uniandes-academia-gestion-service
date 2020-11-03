@@ -22,7 +22,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 
 public class DataProcessorSuspensionesDisciplinarias {
 	
-	@BeanInject("props")
+	@BeanInject("props-gestion")
     private Properties properties;
 	  
 	  public void process(Exchange exchange, 

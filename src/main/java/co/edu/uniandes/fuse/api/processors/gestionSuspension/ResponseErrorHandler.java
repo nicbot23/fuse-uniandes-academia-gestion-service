@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 public class ResponseErrorHandler {
 	
-	@BeanInject("props")
+	@BeanInject("props-gestion")
 	private Properties properties;
 
 	public void process(Exchange exchange, @ExchangeProperty("estado") Boolean estado,

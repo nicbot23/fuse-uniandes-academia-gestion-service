@@ -19,7 +19,7 @@ import co.edu.uniandes.fuse.api.utils.Util;
 
 public class DataProcessorSuspensionesAcademicas  {
 	
-	  @BeanInject("props")
+	  @BeanInject("props-gestion")
 	  private Properties properties;
 	  
 	  

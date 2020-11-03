@@ -42,9 +42,9 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ResponseHandlerr {
+public class ResponseHandler {
 	
-	@BeanInject("props")
+	@BeanInject("props-gestion")
 	private Properties properties;
 	private Exchange exchange;
 	private Object response;

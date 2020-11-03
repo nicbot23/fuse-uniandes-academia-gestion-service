@@ -1,11 +1,6 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
-Bnd-LastModified: 1604098854846
+Bnd-LastModified: 1604436419129
 Build-Jdk: 1.8.0_271
-=======
-Bnd-LastModified: 1604421124723
-Build-Jdk: 11.0.9
->>>>>>> developer
 Built-By: n.ibarra
 Bundle-ManifestVersion: 2
 Bundle-Name: UNIANDES ::: WS-REST API-GESTION
@@ -17,7 +12,6 @@ Export-Package: co.edu.uniandes.fuse.api.utils;uses:="javax.xml.datatype
  ion;uses:="org.codehaus.jackson.map,co.edu.uniandes.model,org.codehaus.
  jackson.annotate";version="1.0.0",co.edu.uniandes.fuse.api.processors.g
  estionSuspension;uses:="org.apache.camel,org.apache.commons.codec.binar
-<<<<<<< HEAD
  y,co.edu.uniandes.fuse.api.utils,co.edu.uniandes.fuse.api.models.entity
  .gestionSuspension,org.codehaus.jackson.map,co.edu.uniandes.model,javax
  .xml.datatype,org.apache.cxf.message,javax.servlet,org.apache.camel.spi
@@ -34,9 +28,9 @@ Export-Package: co.edu.uniandes.fuse.api.utils;uses:="javax.xml.datatype
  uses:="co.edu.uniandes.model,org.apache.cxf.message,javax.servlet,org.a
  pache.camel,org.apache.camel.spi,javax.security.auth,org.apache.cxf.jax
  rs.utils,javax.ws.rs.core,org.slf4j,org.apache.camel.util,org.codehaus.
- jackson.map,co.edu.uniandes.fuse.api.utils,co.edu.uniandes.fuse.api.mod
- els.entity.gestionNotas,org.springframework.stereotype,org.codehaus.jac
- kson.annotate,org.codehaus.jackson";version="1.0.0",co.edu.uniandes.uti
+ jackson.map,co.edu.uniandes.fuse.api.models.entity.gestionNotas,org.cod
+ ehaus.jackson.annotate,co.edu.uniandes.fuse.api.utils,org.springframewo
+ rk.stereotype,org.codehaus.jackson";version="1.0.0",co.edu.uniandes.uti
  l.ws.interceptor;uses:="org.codehaus.jackson.annotate,org.apache.cxf.in
  terceptor,org.apache.cxf.transport.http,org.slf4j,javax.servlet.http,or
  g.apache.cxf.phase,org.apache.cxf.binding.soap,org.apache.cxf.message,j
@@ -69,56 +63,6 @@ Export-Package: co.edu.uniandes.fuse.api.utils;uses:="javax.xml.datatype
  ainer,javax.ws.rs.core,javax.annotation,javax.servlet,org.apache.cxf.me
  ssage,org.apache.cxf.jaxrs.impl,javax.security.auth.login,org.codehaus.
  jackson.annotate";version="1.0.0"
-=======
- y,javax.servlet,org.apache.cxf.message,org.apache.camel.spi,javax.secur
- ity.auth,org.apache.cxf.jaxrs.utils,org.codehaus.jackson.map,javax.ws.r
- s.core,org.slf4j,co.edu.uniandes.model,org.apache.camel.util,org.codeha
- us.jackson.annotate";version="1.0.0",co.edu.uniandes.fuse.core.utils.ro
- utes;uses:="org.apache.camel.builder,org.apache.camel.model.dataformat,
- org.apache.camel.component.properties,org.apache.camel,co.edu.uniandes.
- fuse.core.utils.beans,org.apache.camel.model";version="1.0.1",co.edu.un
- iandes.fuse.api.models.entity.gestionNotas;uses:="com.fasterxml.jackson
- .annotation,co.edu.uniandes.model,org.codehaus.jackson.annotate";versio
- n="1.0.0",co.edu.uniandes.fuse.core.utils.beans;uses:="org.apache.camel
- ,co.edu.uniandes.fuse.core.utils.models";version="1.0.1",co.edu.uniande
- s.fuse.api.processors.gestionNotas;uses:="co.edu.uniandes.model,org.apa
- che.cxf.message,javax.servlet,org.apache.camel,org.apache.camel.spi,jav
- ax.security.auth,org.apache.cxf.jaxrs.utils,javax.ws.rs.core,org.slf4j,
- org.apache.camel.util,org.codehaus.jackson.map,co.edu.uniandes.fuse.api
- .models.entity.gestionNotas,org.codehaus.jackson.annotate,co.edu.uniand
- es.fuse.api.utils,org.springframework.stereotype,org.codehaus.jackson";
- version="1.0.0",co.edu.uniandes.util.ws.interceptor;uses:="org.codehaus
- .jackson.annotate,org.apache.cxf.interceptor,org.apache.cxf.transport.h
- ttp,org.slf4j,javax.servlet.http,org.apache.cxf.phase,org.apache.cxf.bi
- nding.soap,org.apache.cxf.message,javax.servlet,org.apache.cxf.binding.
- soap.interceptor,javax.xml.bind";version="1.0.0",co.edu.uniandes.util.s
- oap.interceptor;uses:="org.apache.cxf.interceptor,org.apache.cxf.transp
- ort.http,org.slf4j,javax.servlet.http,org.apache.cxf.phase,javax.servle
- t,org.apache.cxf.binding.soap,org.apache.cxf.message,org.apache.cxf.ser
- vice.model,org.apache.cxf.binding.soap.interceptor,javax.xml.bind";vers
- ion="1.0.0",co.edu.uniandes.model.util;uses:="org.codehaus.jackson.map,
- org.codehaus.jackson";version="1.0.0",co.edu.uniandes.util.processor;us
- es:="org.apache.cxf.message,org.apache.camel,org.slf4j,org.apache.camel
- .component.cxf.common.message,org.apache.cxf.security";version="1.0.0",
- co.edu.uniandes.fuse.core.utils.models;uses:="com.fasterxml.jackson.ann
- otation,io.swagger.annotations";version="1.0.1",co.edu.uniandes.model;u
- ses:="org.codehaus.jackson.annotate,co.edu.uniandes.model.util,org.code
- haus.jackson.map.annotate";version="1.0.0",co.edu.uniandes.fuse.api.ges
- tion.routes;uses:="co.edu.uniandes.fuse.core.utils.beans,org.apache.cam
- el.model,org.apache.camel.builder,org.apache.camel,co.edu.uniandes.fuse
- .core.utils.models,org.apache.camel.model.rest,co.edu.uniandes.fuse.api
- .processors.gestionNotas,org.omg.CORBA.portable,org.apache.camel.compon
- ent.properties,org.apache.camel.component.netty.http,org.apache.camel.c
- omponent.sql,javax.sql,org.springframework.jndi,co.edu.uniandes.fuse.ap
- i.processors.gestionSuspension";version="1.0.0",co.edu.uniandes.util.re
- st.interceptor;uses:="org.apache.cxf.interceptor.security,javax.securit
- y.auth.callback,org.apache.cxf.interceptor,org.apache.cxf.transport.htt
- p,org.slf4j,org.apache.cxf.jaxrs.utils,javax.servlet.http,org.codehaus.
- jackson.map,co.edu.uniandes.util.ws.interceptor,org.apache.cxf.common.u
- til,javax.ws.rs.container,javax.ws.rs.core,javax.annotation,javax.servl
- et,org.apache.cxf.message,org.apache.cxf.jaxrs.impl,javax.security.auth
- .login,org.codehaus.jackson.annotate";version="1.0.0"
->>>>>>> developer
 Import-Package: com.fasterxml.jackson.annotation;version="[2.6,3)";resol
  ution:=optional,io.swagger.annotations;version="[1.5,2)";resolution:=op
  tional,javax.annotation;version="[1.2,2)";resolution:=optional,javax.se
@@ -155,14 +99,7 @@ Import-Package: com.fasterxml.jackson.annotation;version="[2.6,3)";resol
  sion="[1.9,2)";resolution:=optional,org.codehaus.jackson.annotate;versi
  on="[1.9,2)";resolution:=optional,org.codehaus.jackson.map;version="[1.
  9,2)";resolution:=optional,org.codehaus.jackson.map.annotate;version="[
-<<<<<<< HEAD
  1.9,2)";resolution:=optional,org.slf4j;version="[1.7,2)";resolution:=op
  tional,org.springframework.jndi;resolution:=optional,org.springframewor
  k.stereotype;resolution:=optional
-=======
- 1.9,2)";resolution:=optional,org.omg.CORBA.portable;resolution:=optiona
- l,org.slf4j;version="[1.7,2)";resolution:=optional,org.springframework.
- jndi;resolution:=optional,org.springframework.stereotype;resolution:=op
- tional
->>>>>>> developer
 Tool: Bnd-1.50.0
