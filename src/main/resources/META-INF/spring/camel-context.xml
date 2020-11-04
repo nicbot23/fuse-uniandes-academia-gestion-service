@@ -8,22 +8,16 @@
     xmlns:osgix="http://www.springframework.org/schema/osgi-compendium"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="   http://www.springframework.org/schema/osgi-compendium       http://www.springframework.org/schema/osgi-compendium/spring-osgi-compendium.xsd              http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd               http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd              http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd               http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd          http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd">
     
-    <!-- SEARCH DATASOURCE BY JNDI -->
-    <jee:jndi-lookup expected-type="javax.sql.DataSource"
-        id="uni_andes_DS" jndi-name="osgi:service/${jndi.jdbc.uni_andes}"/>
-    <!-- SQL COMPONENT -->
-    <bean class="org.apache.camel.component.sql.SqlComponent" id="sql">
-        <property name="dataSource" ref="uni_andes_DS"/>
-    </bean>
-    
     <bean class="org.apache.camel.component.sql.SqlComponent" id="banner"/>
-    <!-- <bean class="org.apache.camel.component.sql.SqlComponent" id="nife"/>  -->
-    <bean class="org.apache.camel.component.sql.SqlComponent" id="registro"/>
-    <bean
-        class="org.apache.camel.component.netty.http.SecurityConstraintMapping" id="authConstrain"/>
+    
+    <bean class="org.apache.camel.component.netty.http.SecurityConstraintMapping" id="authConstrain"/>
+    
     <osgix:cm-properties id="props-gestion" persistent-id="api.gestion"/>
+    
     <osgi:reference id="sharedNettyHttpServer" interface="org.apache.camel.component.netty.http.NettySharedHttpServer"/>
+    
     <camelContext id="API-GESTION" trace="false" useMDCLogging="true" xmlns="http://camel.apache.org/schema/spring">
         <package>co.edu.uniandes.fuse.api.gestion.routes</package>
     </camelContext>
+    
 </beans>

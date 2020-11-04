@@ -117,7 +117,7 @@ public class ResponseHandler {
 				out.setsCodigoRespuesta(this.properties.getProperty("msj.codigo.exitoso"));
 			} else {
 				out.setbOperacionExitosa(false);
-				out.setsCodigoRespuesta(this.properties.getProperty("msj.codigo.notFound"));
+				out.setsCodigoRespuesta(this.properties.getProperty("msj.code.not.found"));
 				out.setsMensajeRtaTecnico(this.properties.getProperty("excepcion.registros.vacios"));
 				out.setsMensajeRtaUsuario(this.properties.getProperty("excepcion.registros.vacios"));
 			}
@@ -125,7 +125,7 @@ public class ResponseHandler {
 			response.setSalida(listSalida);
 		} else {
 			out.setbOperacionExitosa(false);
-			out.setsCodigoRespuesta(this.properties.getProperty("msj.codigo.notFound"));
+			out.setsCodigoRespuesta(this.properties.getProperty("msj.code.not.found"));
 			out.setsMensajeRtaTecnico(this.properties.getProperty("excepcion.rol.invalido"));
 			out.setsMensajeRtaUsuario(this.properties.getProperty("excepcion.rol.invalido"));
 		}

@@ -18,7 +18,6 @@ public class RestConfiguration extends RouteBuilder{
 	SecurityConstraintMapping authConstrain;
 	
 	private DataSource dataSourceBanner;
-	private DataSource dataSourceRegistro;
 	
 	private String realm = "";
 	private String securityConstraint = "";
@@ -42,15 +41,11 @@ public class RestConfiguration extends RouteBuilder{
 			dataSourceBanner = jndi.lookup("osgi:service/jdbc/"+jndiName, DataSource.class);
 			
 			
-			JndiTemplate jndiP = new JndiTemplate();
-			String jndiNameP = context.resolvePropertyPlaceholders("{{datasource.api.registro}}");
-			dataSourceRegistro = jndi.lookup("osgi:service/jdbc/"+jndiNameP, DataSource.class);
 			
 		} catch (Exception e) {
 			//dataSource = TestDataSource.getDataSource();
 		}
 		context.getComponent("banner", SqlComponent.class).setDataSource(dataSourceBanner);	
-		context.getComponent("registro", SqlComponent.class).setDataSource(dataSourceRegistro);	
 		
 		//BASIC AUTH CONFIGURATION 
 		String apiAuth = context.resolvePropertyPlaceholders("{{auth.api.enable}}");
