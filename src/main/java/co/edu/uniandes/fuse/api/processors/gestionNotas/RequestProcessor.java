@@ -47,8 +47,11 @@ public class RequestProcessor implements Processor{
 	public void validateHeaders() {
 		String queryString = (String) this.exchange.getIn().getHeader("CamelHttpQuery", String.class);
 		MultivaluedMap<?, ?> queryMap = JAXRSUtils.getStructuredParams(queryString, "&", false, false);
-		if (queryMap.size() == 0)
+		if (queryMap.size() == 0) {
+			exchange.setProperty("HttpErrorCode", "http.code.bad.request");
 			throw new IllegalArgumentException("No se ha diligenciado los campos minimos requeridos");
+		}
+			
 	}
 
 	public void setDocument() {
@@ -75,10 +78,12 @@ public class RequestProcessor implements Processor{
 		}
 
 		if ((sdocument == null) && (slogin == null) && (spidm == null) && (scodigo == null)) {
+			exchange.setProperty("HttpErrorCode", "http.code.bad.request");
 			throw new IllegalArgumentException("No se ha diligenciado los campos minimos requeridos");
 		}
 		if ((sdocument != null) && (slogin != null) && (spidm != null) && (scodigo != null)) {
 			if ((sdocument.equals("")) && (slogin.equals("")) && (spidm.equals("")) && (scodigo.equals("")))
+				exchange.setProperty("HttpErrorCode", "http.code.bad.request");
 				throw new IllegalArgumentException("No se ha diligenciado los campos minimos requeridos");
 		}
 
@@ -86,6 +91,7 @@ public class RequestProcessor implements Processor{
 			try {
 				Long.parseLong(spidm);
 			} catch (NumberFormatException e) {
+				exchange.setProperty("HttpErrorCode", "http.code.bad.request");
 				throw new IllegalArgumentException("Campo spidm inválido.");
 			}
 		}
@@ -94,6 +100,7 @@ public class RequestProcessor implements Processor{
 			try {
 				Long.parseLong(sdocument);
 			} catch (NumberFormatException e) {
+				exchange.setProperty("HttpErrorCode", "http.code.bad.request");
 				throw new IllegalArgumentException("Campo snumerodocumento inválido.");
 			}
 		}
@@ -102,12 +109,14 @@ public class RequestProcessor implements Processor{
 			try {
 				Long.parseLong(scodigo);
 			} catch (NumberFormatException e) {
+				exchange.setProperty("HttpErrorCode", "http.code.bad.request");
 				throw new IllegalArgumentException("Campo scodigo inválido.");
 			}
 		}
 		if ((slogin != null) && (!slogin.trim().equals(""))) {
 			try {
 				Long.parseLong(slogin);
+				exchange.setProperty("HttpErrorCode", "http.code.bad.request");
 				throw new IllegalArgumentException("Campo slogin inválido.");
 			} catch (NumberFormatException e) {
 			}
@@ -119,16 +128,23 @@ public class RequestProcessor implements Processor{
 		String periodo = (String) this.exchange.getIn().getHeader("speriodo");
 
 		if (periodo != null) {
-			if (periodo.equals(""))
+			if (periodo.equals("")) {
+				exchange.setProperty("HttpErrorCode", "http.code.bad.request");
 				throw new IllegalArgumentException("campo speriodo invalido");
-			if (periodo.length() != 6)
+			}
+				
+			if (periodo.length() != 6) {
+				exchange.setProperty("HttpErrorCode", "http.code.bad.request");
 				throw new IllegalArgumentException("campo speriodo invalido");
+			}
 		} else if (periodo == null) {
+			exchange.setProperty("HttpErrorCode", "http.code.bad.request");
 			throw new IllegalArgumentException("campo speriodo invalido");
 		}
 		try {
 			Integer.parseInt(periodo);
 		} catch (NumberFormatException e) {
+			exchange.setProperty("HttpErrorCode", "http.code.bad.request");
 			throw new IllegalArgumentException("campo speriodo invalido");
 		}
 		this.exchange.setProperty("speriodo", periodo);
@@ -141,6 +157,7 @@ public class RequestProcessor implements Processor{
 
 		if ((crn == null || crn.trim().equals("")) && (codigo == null || codigo.trim().equals(""))
 				&& (nombre == null || nombre.trim().equals(""))) {
+			exchange.setProperty("HttpErrorCode", "http.code.bad.request");
 			throw new IllegalArgumentException("Parámetros insuficientes para realizar la consulta");
 		}
 
@@ -148,6 +165,7 @@ public class RequestProcessor implements Processor{
 			try {
 				Long.parseLong(crn);
 			} catch (NumberFormatException e) {
+				exchange.setProperty("HttpErrorCode", "http.code.bad.request");
 				throw new IllegalArgumentException("Campo scrn inválido");
 			}
 		}
@@ -156,6 +174,7 @@ public class RequestProcessor implements Processor{
 			try {
 				Long.parseLong(codigo);
 			} catch (NumberFormatException e) {
+				exchange.setProperty("HttpErrorCode", "http.code.bad.request");
 				throw new IllegalArgumentException("Campo scodigocurso inválido");
 			}
 		}
@@ -163,6 +182,7 @@ public class RequestProcessor implements Processor{
 		if ((nombre != null) && (!nombre.trim().equals(""))) {
 			try {
 				Long.parseLong(nombre);
+				exchange.setProperty("HttpErrorCode", "http.code.bad.request");
 				throw new IllegalArgumentException("Campo snombrecurso inválido");
 			} catch (NumberFormatException e) {
 			}
@@ -176,9 +196,12 @@ public class RequestProcessor implements Processor{
 
 	public void validarNivel() {
 		String nivel = (String) this.exchange.getIn().getHeader("snivel");
-		if (nivel == null)
+		if (nivel == null) {
+			exchange.setProperty("HttpErrorCode", "http.code.bad.request");
 			throw new IllegalArgumentException("campo snivel inavlido");
+		}
 		if (nivel.equals("")) {
+			exchange.setProperty("HttpErrorCode", "http.code.bad.request");
 			throw new IllegalArgumentException("campo snivel inavlido");
 		}
 		this.exchange.setProperty("snivel", nivel);
@@ -186,13 +209,21 @@ public class RequestProcessor implements Processor{
 
 	public void validarCRN() {
 		String crn = (String) this.exchange.getIn().getHeader("scrn");
-		if (crn == null)
+		if (crn == null) {
+			exchange.setProperty("HttpErrorCode", "http.code.bad.request");
 			throw new IllegalArgumentException("campo scrn invalido");
-		if (crn.equals(""))
+		}
+			
+		if (crn.equals("")) {
+			exchange.setProperty("HttpErrorCode", "http.code.bad.request");
 			throw new IllegalArgumentException("campo scrn invalido");
+		}
+			
+			
 		try {
 			Integer.parseInt(crn);
 		} catch (NumberFormatException e) {
+			exchange.setProperty("HttpErrorCode", "http.code.bad.request");
 			throw new IllegalArgumentException("campo scrn invalido");
 		}
 
@@ -203,6 +234,7 @@ public class RequestProcessor implements Processor{
 		String nivel = (String) this.exchange.getIn().getHeader("snivel");
 		if (nivel != null) {
 			if (nivel.equals("")) {
+				exchange.setProperty("HttpErrorCode", "http.code.bad.request");
 				throw new IllegalArgumentException("campo snivel invalido");
 			}
 
@@ -214,12 +246,15 @@ public class RequestProcessor implements Processor{
 		String slogin = (String) this.exchange.getIn().getHeader("slogin");
 		String sCodigoCurso = (String) this.exchange.getIn().getHeader("scodigocurso");
 		if (((slogin == null) || (slogin.equals(""))) && ((sCodigoCurso == null) || (sCodigoCurso.equals("")))) {
+			exchange.setProperty("HttpErrorCode", "http.code.bad.request");
 			throw new IllegalArgumentException("No se ha diligenciado los campos minimos requeridos");
 		}
 		if ((slogin == null) || (slogin.trim().equals(""))) {
+			exchange.setProperty("HttpErrorCode", "http.code.bad.request");
 			throw new IllegalArgumentException("campo slogin invalido");
 		}
 		if ((sCodigoCurso == null) || (sCodigoCurso.trim().equals(""))) {
+			exchange.setProperty("HttpErrorCode", "http.code.bad.request");
 			throw new IllegalArgumentException("campo sCodigoCurso invalido");
 		}
 		this.exchange.setProperty("login_estudiante", slogin);

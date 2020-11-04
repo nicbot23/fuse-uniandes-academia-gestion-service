@@ -5,7 +5,7 @@
   
   <groupId>co.edu.uniandes.fuse.api</groupId>
 	<artifactId>gestion</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<packaging>bundle</packaging>
 	<name>UNIANDES ::: WS-REST API-GESTION</name>
 	

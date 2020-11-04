@@ -1,68 +1,68 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1604443266784
+Bnd-LastModified: 1604528934772
 Build-Jdk: 1.8.0_271
 Built-By: n.ibarra
 Bundle-ManifestVersion: 2
 Bundle-Name: UNIANDES ::: WS-REST API-GESTION
 Bundle-SymbolicName: co.edu.uniandes.fuse.api.gestion
-Bundle-Version: 1.0.0
+Bundle-Version: 1.0.1
 Created-By: Apache Maven Bundle Plugin
 Export-Package: co.edu.uniandes.fuse.api.utils;uses:="javax.xml.datatype
- ";version="1.0.0",co.edu.uniandes.fuse.api.models.entity.gestionSuspens
+ ";version="1.0.1",co.edu.uniandes.fuse.api.models.entity.gestionSuspens
  ion;uses:="org.codehaus.jackson.map,co.edu.uniandes.model,org.codehaus.
- jackson.annotate";version="1.0.0",co.edu.uniandes.fuse.api.processors.g
+ jackson.annotate";version="1.0.1",co.edu.uniandes.fuse.api.processors.g
  estionSuspension;uses:="org.apache.camel,org.apache.commons.codec.binar
  y,co.edu.uniandes.fuse.api.utils,co.edu.uniandes.fuse.api.models.entity
  .gestionSuspension,org.codehaus.jackson.map,co.edu.uniandes.model,javax
  .xml.datatype,org.apache.cxf.message,javax.servlet,org.apache.camel.spi
  ,javax.security.auth,org.apache.cxf.jaxrs.utils,javax.ws.rs.core,org.sl
- f4j,org.apache.camel.util,org.codehaus.jackson.annotate";version="1.0.0
+ f4j,org.apache.camel.util,org.codehaus.jackson.annotate";version="1.0.1
  ",co.edu.uniandes.fuse.core.utils.routes;uses:="org.apache.camel.builde
  r,org.apache.camel.model.dataformat,org.apache.camel.component.properti
  es,org.apache.camel,co.edu.uniandes.fuse.core.utils.beans,org.apache.ca
  mel.model";version="1.0.1",co.edu.uniandes.fuse.api.models.entity.gesti
  onNotas;uses:="com.fasterxml.jackson.annotation,co.edu.uniandes.model,o
- rg.codehaus.jackson.annotate";version="1.0.0",co.edu.uniandes.fuse.core
+ rg.codehaus.jackson.annotate";version="1.0.1",co.edu.uniandes.fuse.core
  .utils.beans;uses:="org.apache.camel,co.edu.uniandes.fuse.core.utils.mo
  dels";version="1.0.1",co.edu.uniandes.fuse.api.processors.gestionNotas;
- uses:="co.edu.uniandes.model,org.apache.cxf.message,javax.servlet,org.a
- pache.camel,org.apache.camel.spi,javax.security.auth,org.apache.cxf.jax
+ uses:="org.apache.camel,co.edu.uniandes.model,org.apache.cxf.message,ja
+ vax.servlet,org.apache.camel.spi,javax.security.auth,org.apache.cxf.jax
  rs.utils,javax.ws.rs.core,org.slf4j,org.apache.camel.util,org.codehaus.
  jackson.map,co.edu.uniandes.fuse.api.models.entity.gestionNotas,org.cod
  ehaus.jackson.annotate,co.edu.uniandes.fuse.api.utils,org.springframewo
- rk.stereotype,org.codehaus.jackson";version="1.0.0",co.edu.uniandes.uti
+ rk.stereotype,org.codehaus.jackson";version="1.0.1",co.edu.uniandes.uti
  l.ws.interceptor;uses:="org.codehaus.jackson.annotate,org.apache.cxf.in
  terceptor,org.apache.cxf.transport.http,org.slf4j,javax.servlet.http,or
  g.apache.cxf.phase,org.apache.cxf.binding.soap,org.apache.cxf.message,j
  avax.servlet,org.apache.cxf.binding.soap.interceptor,javax.xml.bind";ve
- rsion="1.0.0",co.edu.uniandes.util.soap.interceptor;uses:="org.apache.c
+ rsion="1.0.1",co.edu.uniandes.util.soap.interceptor;uses:="org.apache.c
  xf.interceptor,org.apache.cxf.transport.http,org.slf4j,javax.servlet.ht
  tp,org.apache.cxf.phase,javax.servlet,org.apache.cxf.binding.soap,org.a
  pache.cxf.message,org.apache.cxf.service.model,org.apache.cxf.binding.s
- oap.interceptor,javax.xml.bind";version="1.0.0",co.edu.uniandes.model.u
+ oap.interceptor,javax.xml.bind";version="1.0.1",co.edu.uniandes.model.u
  til;uses:="org.codehaus.jackson.map,org.codehaus.jackson";version="1.0.
- 0",co.edu.uniandes.util.processor;uses:="org.apache.cxf.message,org.apa
+ 1",co.edu.uniandes.util.processor;uses:="org.apache.cxf.message,org.apa
  che.camel,org.slf4j,org.apache.camel.component.cxf.common.message,org.a
- pache.cxf.security";version="1.0.0",co.edu.uniandes.fuse.core.utils.mod
+ pache.cxf.security";version="1.0.1",co.edu.uniandes.fuse.core.utils.mod
  els;uses:="com.fasterxml.jackson.annotation,io.swagger.annotations";ver
  sion="1.0.1",co.edu.uniandes.model;uses:="org.codehaus.jackson.annotate
  ,co.edu.uniandes.model.util,org.codehaus.jackson.map.annotate";version=
- "1.0.0",co.edu.uniandes.fuse.api.gestion.routes;uses:="co.edu.uniandes.
- fuse.core.utils.beans,org.apache.camel.model,org.apache.camel.builder,c
- o.edu.uniandes.fuse.core.utils.models,org.apache.camel,co.edu.uniandes.
- fuse.api.models.entity.gestionNotas,org.apache.camel.model.rest,co.edu.
- uniandes.fuse.api.processors.gestionNotas,org.apache.camel.component.pr
+ "1.0.1",co.edu.uniandes.fuse.api.gestion.routes;uses:="org.apache.camel
+ .builder,org.apache.camel,co.edu.uniandes.fuse.core.utils.beans,co.edu.
+ uniandes.fuse.api.processors.gestionNotas,org.apache.camel.model,co.edu
+ .uniandes.fuse.core.utils.models,co.edu.uniandes.fuse.api.models.entity
+ .gestionNotas,org.apache.camel.model.rest,org.apache.camel.component.pr
  operties,org.apache.camel.component.netty.http,org.apache.camel.compone
  nt.sql,javax.sql,org.springframework.jndi,co.edu.uniandes.fuse.api.mode
  ls.entity.gestionSuspension,co.edu.uniandes.fuse.api.processors.gestion
- Suspension";version="1.0.0",co.edu.uniandes.util.rest.interceptor;uses:
+ Suspension";version="1.0.1",co.edu.uniandes.util.rest.interceptor;uses:
  ="org.apache.cxf.interceptor.security,javax.security.auth.callback,org.
  apache.cxf.interceptor,org.apache.cxf.transport.http,org.slf4j,org.apac
  he.cxf.jaxrs.utils,javax.servlet.http,org.codehaus.jackson.map,co.edu.u
  niandes.util.ws.interceptor,org.apache.cxf.common.util,javax.ws.rs.cont
  ainer,javax.ws.rs.core,javax.annotation,javax.servlet,org.apache.cxf.me
  ssage,org.apache.cxf.jaxrs.impl,javax.security.auth.login,org.codehaus.
- jackson.annotate";version="1.0.0"
+ jackson.annotate";version="1.0.1"
 Import-Package: com.fasterxml.jackson.annotation;version="[2.6,3)";resol
  ution:=optional,io.swagger.annotations;version="[1.5,2)";resolution:=op
  tional,javax.annotation;version="[1.2,2)";resolution:=optional,javax.se
